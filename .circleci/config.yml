@@ -27,10 +27,12 @@ jobs:
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
           docker build -t askyora/base-jre:11 ./jvm/openjdk11
-          docker build -t askyora/graalvm-build:22-11 ./graalvm/11.0.8-jdk
+          docker build -t askyora/graalvm-build:22-11 ./graalvm/22.0.02-jdk11.0.8
+          docker build -t askyora/graalvm-build:223-11 ./graalvm/22.3-jdk11
           echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_LOGIN --password-stdin
           docker push askyora/base-jre:11
           docker push askyora/graalvm-build:22-11
+          docker push askyora/graalvm-build:223-11
 
 workflows:
   # Below is the definition of your workflow.
