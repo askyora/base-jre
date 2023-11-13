@@ -75,18 +75,3 @@ RUN dl_URL="https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${S
 	mill_URL="https://github.com/com-lihaoyi/mill/releases/download/${MILL_VERSION}/${MILL_VERSION}" && \
 	curl -sSL --fail --retry 3 $mill_URL > mill && \
 	sudo mv mill /usr/local/bin/mill && chmod +x /usr/local/bin/mill
-
-
-# Install GraalVM
-RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/graalvm-community-jdk-21.0.1_linux-x64_bin.tar.gz https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-21.0.1/graalvm-community-jdk-21.0.1_linux-x64_bin.tar.gz && tar -xzf /tmp/graalvm-community-jdk-21.0.1_linux-x64_bin.tar.gz -C /opt/ && rm /tmp/graalvm-community-jdk-21.0.1_linux-x64_bin.tar.gz && /opt/graalvm-community-openjdk-21.0.1+12.1/bin/java -version
-
-# Install openjfx and build-essential
-RUN apt-get update     && apt-get install -y --no-install-recommends openjfx     && apt-get install -y build-essential     && rm -rf /var/lib/apt/lists/*
-
-ENV JAVA_HOME=/opt/graalvm-community-openjdk-21.0.1+12.1
-
-
-# END IMAGE CUSTOMIZATIONS
-
-# Update PATH for Java tools
-ENV PATH="/opt/sbt/bin:/opt/apache-maven/bin:/opt/apache-ant/bin:/opt/gradle/bin/:/opt/graalvm-community-openjdk-21.0.1+12.1/bin:$PATH"
