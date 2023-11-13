@@ -89,4 +89,4 @@ ENV JAVA_HOME=/opt/graalvm-community-openjdk-21.0.1+12.1
 # END IMAGE CUSTOMIZATIONS
 
 # Update PATH for Java tools
-ENV PATH="/opt/sbt/bin:/opt/apache-maven/bin:/opt/apache-ant/bin:/opt/gradle/bin/:/opt/graalvm-ce-java11-22.3.0/bin:$PATH"
+ENV PATH="/opt/sbt/bin:/opt/apache-maven/bin:/opt/apache-ant/bin:/opt/gradle/bin/:/opt/graalvm-community-openjdk-21.0.1+12.1/bin:$PATH"
